@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tasty/models/recipe.dart';
+import 'package:flutter_tasty/components/recipe_detail.dart';
 
 class PopularRecipeList extends StatefulWidget {
   const PopularRecipeList({Key? key}) : super(key: key);
@@ -92,11 +93,11 @@ class _PopularRecipeListState extends State<PopularRecipeList> {
                     children: [
                       CircleAvatar(
                         radius: 15,
+                        backgroundColor: recipes[index].endColor,
                         child: Text(
                           recipes[index].maker[0],
                           style: TextStyle(color: recipes[index].startColor),
                         ),
-                        backgroundColor: recipes[index].endColor,
                       ),
                       const Spacer(),
                       Row(
