@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tasty/components/my_bottom_navigation_bar.dart';
 import 'package:flutter_tasty/components/pageview_recipe_list.dart';
 import 'package:flutter_tasty/components/popular_recipe_list.dart';
-import 'package:flutter_tasty/components/recipe_detail.dart';
 import 'package:flutter_tasty/models/recipe.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -61,9 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Expanded(
-            child: PageViewRecipeList(),
+            child: PageViewRecipeList(
+              recipes: const [],
+              onRecipeTap: (recipe) {},
+            ),
           ),
-          PopularRecipeList(),
+          const PopularRecipeList(),
         ],
       ),
       bottomNavigationBar: const MyBottomNavigationBar(),
@@ -71,8 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           showSearch(context: context, delegate: MySearchDelegate());
         },
-        child: const Icon(Icons.search),
         backgroundColor: Colors.orange,
+        child: const Icon(Icons.search),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
