@@ -3,7 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_tasty/components/my_bottom_navigation_bar.dart';
 import 'package:flutter_tasty/components/pageview_recipe_list.dart';
 import 'package:flutter_tasty/components/popular_recipe_list.dart';
+import 'package:flutter_tasty/components/recipe_detail.dart';
 import 'package:flutter_tasty/models/recipe.dart';
+
+class RecipeDetailArguments {
+  final Recipe recipe;
+  static const routeName = '/recipe_detail';
+
+  RecipeDetailArguments({required this.recipe});
+}
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -59,13 +67,35 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: const Color(0xFFe7eefb),
       body: Column(
         children: [
-          Expanded(
-            child: PageViewRecipeList(
-              recipes: const [],
-              onRecipeTap: (recipe) {},
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                RecipeDetailArguments.routeName, // use the named route
+                arguments: RecipeDetailArguments(
+                  recipe: recipes[0],
+                ),
+              );
+            },
+            child: Expanded(
+              child: PageViewRecipeList(
+                recipes: const [],
+                onRecipeTap: (recipe) {},
+              ),
             ),
           ),
-          const PopularRecipeList(),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                RecipeDetailArguments.routeName, // use the named route
+                arguments: RecipeDetailArguments(
+                  recipe: recipes[1],
+                ),
+              );
+            },
+            child: const PopularRecipeList(),
+          ),
         ],
       ),
       bottomNavigationBar: const MyBottomNavigationBar(),
