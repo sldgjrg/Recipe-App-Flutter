@@ -20,6 +20,14 @@ class Recipe {
   });
 }
 
+class RecipeDetailArguments {
+  static const String routeName = '/recipe-detail';
+
+  final Recipe recipe;
+
+  RecipeDetailArguments({required this.recipe});
+}
+
 var recipes = [
   Recipe(
     title: 'Biryani',
