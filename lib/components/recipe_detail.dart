@@ -8,6 +8,10 @@ class RecipeDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as RecipeDetailArguments;
+    final recipe = arguments.recipe;
+
     return Scaffold(
       body: Column(
         children: [
@@ -77,19 +81,19 @@ class RecipeDetailPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     Row(
-                      children: [
-                        const Icon(Icons.timer, color: Colors.grey),
-                        const SizedBox(width: 5),
+                      children: const [
+                        Icon(Icons.timer, color: Colors.grey),
+                        SizedBox(width: 5),
                         Text(
                           '30 min',
-                          style: const TextStyle(color: Colors.grey),
+                          style: TextStyle(color: Colors.grey),
                         ),
                       ],
                     ),
                     const SizedBox(height: 20),
-                    Text(
+                    const Text(
                       'Ingredients:',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -111,9 +115,9 @@ class RecipeDetailPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Text(
+                    const Text(
                       'Instructions:',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
