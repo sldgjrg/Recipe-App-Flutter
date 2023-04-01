@@ -24,9 +24,14 @@ class _PopularRecipeListState extends State<PopularRecipeList> {
             onTap: () {
               Navigator.pushNamed(
                 context,
-                '/recipe-detail',
+                RecipeDetailArguments.routeName, // use the named route
                 arguments: recipes[index],
               );
+              // Navigator.pushNamed(
+              //   context,
+              //   '/recipe-detail',
+              //   arguments: recipes[index],
+              // );
             },
             child: Container(
               height: 98,
